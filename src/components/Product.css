@@ -40,3 +40,8 @@
 .product__StarIcon {
   color: #ffa41c;
 }
+
+.Toastify__toast-body > div:last-child {
+  color: #222;
+  font-weight: bold;
+}

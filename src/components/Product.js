@@ -2,6 +2,8 @@ import React from "react";
 import "./Product.css";
 import StarIcon from "@mui/icons-material/Star";
 import { useStateValue } from "../Context/StateProvider";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Product({ id, title, image, price, rating }) {
   const [{ basket }, dispatch] = useStateValue();
@@ -17,7 +19,10 @@ function Product({ id, title, image, price, rating }) {
         rating: rating,
       },
     });
+    toast(`${title} Added to Basket`);
   };
+
+  // const notify = () => toast("Wow so easy !");
   return (
     <div className="product">
       <div className="product__info">

@@ -1,11 +1,34 @@
-.footer {
+.footer__child {
   display: flex;
   justify-content: space-evenly;
   background-color: #232f3e;
   padding: 35px 0 35px 0;
 }
 
+.footer__title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .footer__title,
 .footer__text {
   color: #fff;
+}
+
+.footer__buttonTop {
+  display: flex;
+  justify-content: center;
+  background-color: #37475a;
+  color: #fff;
+  padding: 15px 0 15px 0;
+  transition: all 0.1s ease-in;
+}
+
+.footer__buttonTop span {
+  font-size: 18px;
+}
+
+.footer__buttonTop:hover {
+  background-color: #49586b;
+  cursor: pointer;
 }

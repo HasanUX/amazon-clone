@@ -1,17 +1,44 @@
 import React from "react";
 import "./Home.css";
 import Product from "./Product";
+import HeroBanner1 from "../img/hero-banner-1.jpg";
+import HeroBanner2 from "../img/hero-banner-2.jpg";
+import HeroBanner3 from "../img/hero-banner-3.jpg";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
 
 function Home() {
   return (
     <div className="home">
-      <div className="home__container">
-        <img
-          className="home__image"
-          src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg"
-          alt="home__container"
-        />
-      </div>
+      <Carousel
+        autoPlay={true}
+        infiniteLoop={true}
+        stopOnHover={false}
+        showStatus={false}
+      >
+        <div className="home__container">
+          <img
+            className="home__image"
+            src={HeroBanner1}
+            alt="home__container"
+          />
+        </div>
+        <div className="home__container">
+          <img
+            className="home__image"
+            src={HeroBanner2}
+            alt="home__container"
+          />
+        </div>
+        <div className="home__container">
+          <img
+            className="home__image"
+            src={HeroBanner3}
+            alt="home__container"
+          />
+        </div>
+      </Carousel>
+
       <div className="home__row">
         <Product
           id="1"
@@ -19,6 +46,13 @@ function Home() {
           image="https://www.startech.com.bd/image/cache/catalog/Television/sony/KDL%20W600D-500x500.jpg"
           price={69.99}
           rating={5}
+        />
+        <Product
+          id="2"
+          title="Cougar RANGER Gaming Sofa"
+          image="https://www.startech.com.bd/image/cache/catalog/gaming-chair/cougar/ranger/ranger-01-228x228.jpg"
+          price={49.99}
+          rating={4}
         />
         <Product
           id="2"

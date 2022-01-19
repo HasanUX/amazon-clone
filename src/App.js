@@ -3,10 +3,18 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import Checkout from "./components/Checkout";
 import Login from "./components/Login";
+import Payment from "./components/Payment";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { auth } from "./firebase";
 import { useStateValue } from "./Context/StateProvider";
 import Footer from "./components/Footer";
+import { ToastContainer } from "react-toastify";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+
+const promise = loadStripe(
+  "pk_test_51KJjTWSBw7A2heL0xnRxS6Kr0aFEd0FyMU5A9Vy1SqwFoRDRbhDxpYu2EANVEJiAD6rpv6IzQ0n4Gy7hLGULGR1c0077RKToi1"
+);
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -40,6 +48,19 @@ function App() {
               </>
             }
           />
+
+          <Route
+            exact
+            path="/"
+            element={
+              <>
+                <Header />
+                <Home />
+                <Footer />
+              </>
+            }
+          />
+
           <Route
             exact
             path="/checkout"
@@ -53,16 +74,30 @@ function App() {
 
           <Route
             exact
-            path="/"
+            path="/payment"
             element={
               <>
                 <Header />
-                <Home />
+                <Elements stripe={promise}>
+                  <Payment />
+                </Elements>
                 <Footer />
               </>
             }
           />
         </Routes>
+
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </div>
     </Router>
   );
